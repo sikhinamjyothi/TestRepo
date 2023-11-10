@@ -1,13 +1,4 @@
-1. What is Database?
 
-     Database:-
-     ---------
-
-     1)A data base is a collection of data 
-
-     2)any type of data that will be stored,retrieved ,organized,managed 
-
-===========================================================================================================================================================================================
 
 
 2. What is DBMS and RDBMS?
