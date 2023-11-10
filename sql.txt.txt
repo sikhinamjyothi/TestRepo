@@ -1,0 +1,424 @@
+1. What is Database?
+
+     Database:-
+     ---------
+
+     1)A data base is a collection of data 
+
+     2)any type of data that will be stored,retrieved ,organized,managed 
+
+===========================================================================================================================================================================================
+
+
+2. What is DBMS and RDBMS?
+
+   DBMS:  (DataBase Management System)                        RDBMS(Relational DataBase Management System)
+   ----                                                       -------
+
+1) stores data as file                                   1)stores data in tabular form
+
+2) no relationship b/w data                              2)data is related to eachother      
+
+3) normalization is not present                          3)normalization is present
+
+4)it deals with small quantity of data                   4)it deals with large amount of data 
+
+5)ex:-XML                                                5)ex:-MYSQL,Sql server,Oracle,Microsoft access etc 
+
+===========================================================================================================================================================================================
+
+3. What is SQL?
+
+     SQL:-
+     ----
+
+     1)SQL stands for Structured Query Language
+
+     2)it is programming language  for storing and processing information in a relational database
+
+===========================================================================================================================================================================================
+
+4. What is the difference between SQL and MySQL?
+
+
+    SQL:                                                       MYSQL
+   ----                                                       -------
+
+1) it is a language to manage database                   1)it is database software
+
+2) it is used to query databases                         2)it stores the data      
+
+3) it is a  Structured Query Language                    3)it is RDBMS-Relational DataBase Management System
+
+4)it doesnot provide connectors                          4)it provides a integrated tools called"MySql workbench"
+
+5)it uses codes/commands                                 5)it uses SQL
+
+
+===========================================================================================================================================================================================
+
+5. What are Tables and Fields?
+
+
+   Tables:-
+   --------   Collection of data stored in the form of rows and columns     
+
+
+   Fields:-
+   -------    the columns in a table are called fields                       columns=vertical   ,  rows=horizontal
+
+
+===========================================================================================================================================================================================
+
+
+6. What are Constraints in SQL?
+
+  Constraints in SQL:-
+  ------------------
+                        Constraints are rules that we can apply on the type data in table , we can specify the limit on the type of data can be
+
+
+                       
+               1)PRIMARY KEY - Uniquely identifies each record in a table.
+          
+               2)FOREIGN KEY - Ensures referential integrity for a record in another table
+
+               3)DEFAULT - Automatically assigns a default value if no value has been specified for the field.
+
+               4)NOT NULL - Restricts NULL value from being inserted into a column.
+
+               5)CHECK - Verifies that all values in a field satisfy a condition.
+
+               6)UNIQUE - Ensures unique values to be inserted into the field.
+
+               7)INDEX - Indexes a field providing faster retrieval of records.
+
+
+ ===========================================================================================================================================================================================
+
+7. What is a Primary Key and Unique key and Foreign key?
+
+    
+
+    Primary Key:                                                       Unique key                                            Foreign key
+    ------------                                                       -----------                                          ------------
+
+1) it can not accept null values                         1)it can accept only one null value                            1)it is a primary key of another table
+
+2) creates Clustered index                               2)creates Non-Clustered index                                  2)it can contain null values/duplicates
+
+3) only one primary key in a table                       3)more than one unique key in a table
+
+
+ ===========================================================================================================================================================================================
+
+8. What is a Join? List its different types.
+
+   Join:-
+   -----   Combining two or more tables based on the common condition/column
+
+
+                                                                                    Join
+                                                                                      |
+                                  -------------------------------------------------------------------------------------------------------------
+                                 |                                      |                                |                                    |
+                              Inner join                     Left Outer join                     Right Outer join                        Full Outer join
+
+
+
+   Inner join:-
+   -----------     Common records from both the tables
+
+
+   Left Outer join:-
+   ----------------  Common records from  both the tables and all records from leftside table 
+
+
+   
+    Right Outer join:-
+   ----------------  Common records from both the tables and all records from rightside table 
+
+
+    
+   Full  Outer join:-
+   ----------------   all records  where there is a match in either left or right table
+
+===========================================================================================================================================================================================
+
+9. What is a Self-Join?
+
+ Self-Join:-
+ ----------   used to join a table itself
+
+===========================================================================================================================================================================================
+
+
+10. What is a Cross-Join?
+
+   Cross-Join:-
+   -----------   no.of rows in the first table  multiplied by the no.of rows in the second table
+
+===========================================================================================================================================================================================
+
+11. What is an Index? Explain its different types.
+
+  Index:-
+  ------   indexes are used to retrieve  data from the database more quickly
+
+ different types:-
+ ----------------
+       1)Clustered Index.
+       2)Non-Clustered Index.
+       3)Column Store Index.
+       4)Filtered Index.
+       5)Hash Index.
+       6)Unique Index.
+
+===========================================================================================================================================================================================
+
+12. What is the difference between Clustered and Non-clustered index?
+
+   
+           Clustered                                          
+          -----------                                                      
+
+                   used to define the order/sort the table or arrange the data like alphabetical order just like dictionary             
+
+
+           Non-clustered
+          ---------------
+         
+                   collects the data at one place and records at another place
+
+===========================================================================================================================================================================================
+
+13. What is Data Integrity?
+
+    Data Integrity:-
+    ---------------    ensuring that each row of a table is uniquely identified so that data can be retrieved separately
+
+===========================================================================================================================================================================================
+
+
+14. What is a Query?
+
+   Query:-
+  --------  a query is a request for data from database to table
+
+===========================================================================================================================================================================================
+
+15. What is a Subquery? What are its types?
+
+   Subquery:-
+   --------   it is a query within the another query  also known as nested/inner query
+
+   types:-
+   -------
+               1)Independent Nested Queries.
+               2)Co-related Nested Queries.
+
+===========================================================================================================================================================================================
+
+16. What is the SELECT statement?
+
+    SELECT statement:-
+    -----------------    it is used to select data from a database ,the data returned  is stored in  a result table called result-set
+
+
+===========================================================================================================================================================================================
+
+17. What are some common clauses used with SELECT query in SQL?
+
+  1.WHERE
+
+  2.ORDER BY-- sort the records based on some field(s) in ascending (ASC) or descending order (DESC).
+
+  3.GROUP BY 
+
+  4.HAVING
+
+===========================================================================================================================================================================================
+
+18. What are UNION, MINUS and INTERSECT commands?
+
+  UNION:-
+  ------     it is used to combine the result set of two or more select statements
+
+
+  MINUS:-
+  ------   able to see data in the first table and not present in the second table 
+
+ 
+  INTERSECT:-
+  ---------   the commond returns the common elements between two queries
+
+
+===========================================================================================================================================================================================
+
+
+19. What is Cursor? How to use a Cursor?
+
+    Cursor:-
+    -------  
+               1.cursors are used to store database tables
+
+               2.it is temporary memory station
+               
+               3.it is allocated by database server ,at the time of performing DML(Data Manipulation Language)
+
+               4.there are two types of cursors
+                                           |
+                     ---------------------------------------------------
+                     |                                                 |
+                    Explicit                                        Implicit
+
+=========================================================================================================================================================================================== 
+
+20. What are Entities and Relationships?
+                
+    Entities:-
+    ---------    it can be a real world object ,either tangible or intangible ,that can be easily identifiable 
+           
+
+   Relationships:-
+  ---------------    relations or links between entities that have somthing to do with eachother
+
+===========================================================================================================================================================================================
+
+21. List the different types of relationships in SQL.
+
+   different types:-
+   ----------------
+  
+            1)One-to-One 
+
+            2)One-to-Many & Many-to-One 
+ 
+            3)Many-to-Many 
+
+            4)Self-Referencing Relationships 
+
+
+===========================================================================================================================================================================================
+
+22. What is an Alias in SQL?
+
+    Alias:-
+   --------     alias are temporary names given to tables or columns for the purpose of particular query ,it is created with the AS keyword
+
+
+===========================================================================================================================================================================================
+
+23. What is a View?
+
+   View:-
+  ------  it is a virtual table based on the result-set of an SQL statement,a view contains rows and columns just like a real table
+
+===========================================================================================================================================================================================
+
+24. What is Normalization?
+
+  Normalization:-
+  -------------     putting data in the multiple tables to aviod redundency
+
+
+  de- Normalization:-
+  -----------------     it is a technique of combining the data into a single table to make data retrieval faster
+
+
+===========================================================================================================================================================================================
+
+25. What are the TRUNCATE, DELETE and DROP statements?
+
+   TRUNCATE                                                      DELETE                                                                 DROP
+   --------                                                     ---------                                                              -------
+  removes all data from a table                      removes specific rows from a table                                         removes an entire table
+
+===========================================================================================================================================================================================
+
+26. What are Aggregate and Scalar functions?
+
+
+     Aggregate                                                                                                 Scalar
+   ------------                                                                                             ---------------
+it performs operations on a collection of values to return a single scalar value               it returns a single value based on the input values  
+
+  1)AVG() - Calculates the mean of a collection of values.                                          1)LEN() - Calculates the total length of the given field (column).
+  2)COUNT() - Counts the total number of records in a specific table or view.                       2)UCASE() - Converts a collection of string values to uppercase characters.
+  3)MIN() - Calculates the minimum of a collection of values.                                       3)LCASE() - Converts a collection of string values to lowercase characters.
+  4)MAX() - Calculates the maximum of a collection of values.                                       4)MID() - Extracts substrings from a collection of string values in a table
+  5)SUM() - Calculates the sum of a collection of values.                                           5)CONCAT() - Concatenates two or more strings.
+  6)FIRST() - Fetches the first element in a collection of values.                                  6)RAND() - Generates a random collection of numbers of a given length.
+  7)LAST() - Fetches the last element in a collection of values.                                    7)ROUND() - Calculates the round-off integer value for a numeric field
+                                                                                                    8)NOW() - Returns the current date & time.
+                                                                                                    9)FORMAT() - Sets the format to display a collection of values
+                                                                                                    
+                                                                                                    
+ ===========================================================================================================================================================================================                                                                                                   
+                                                                                                    
+ 27. What is User-defined function? What are its various types?
+                                                                                               
+    User-defined function:-
+    ----------------------    1)these are functions in any other programming language   that accepts parameters,complex calculations and return a value 
+                              2)they are written to use the logic repetitively whenever required
+
+
+
+  types:-
+  -----     1.scalar function
+            2.table-valued-functions
+
+
+===========================================================================================================================================================================================
+
+1)normalization:-
+----------------
+
+  it is a database design technique to remove redundant data
+
+
+2)how to implement normalization:-
+----------------------------------
+
+  it is implemented by splitting tables into  two ---1)reference data(master table),2)other transcation data
+
+
+
+3)de-normalization:-
+---------------------
+
+   it is a database design technique to improve search performances
+
+
+4)primary key  and unique key:-
+------------      -------------
+
+  they do not have duplicate values
+
+  
+5)char and nvarchar:-
+--------------------
+
+  char--fixed length
+
+  varchar --variable length
+
+===========================================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

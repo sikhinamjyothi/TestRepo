@@ -1,0 +1,1931 @@
+1. What is C#?
+
+
+        1) C# is a object oreineted programming language
+
+        2) developed by  Microsoft that runs on the .NET Framework.
+
+        3) used in creating 1)windows application
+                            2)mobile application
+                            3)client-server application
+                            4)data base application
+                            5)web services etc
+      
+        .NET Framework :- (network enable technologis)
+         --------------
+         1)Collection of libraries
+         2)supports multiple programming languages -->because-->to excute code
+
+===========================================================================================================================================================================================
+
+2. What is the difference between static, public, and void?
+
+
+     static:-
+     --------    variables can  be declard without instance of class   
+
+     Doctor.Name = "Jp";            X----(Doctor doc = new Doctor)--->not used
+
+
+
+     public:-     
+     --------    the code is accessible in all cases 
+
+      void:-
+     -------      it returns nothing   ------>  (no return type)------>like int,string etc
+
+============================================================================================================================================================================================
+
+3. What is an object?
+
+
+   object:-   It is an instance of class  & by using "new"  keyword can b used to construct an object         (Doctor doc = new Doctor)
+   -------
+
+============================================================================================================================================================================================
+
+
+4. Define Constructors.
+
+   Constructor:-
+   -------------     
+
+       1)funtion : it has same name as class
+       2)it has no return type
+       3)when ever an object  is created it will call the constructor and set the default values to the properties(default constructor)
+       4)to initilize  class propeties while object creating (parameter constructor)
+
+       ex:-
+       ---
+       var aked = new AsymmetricKeyExchangeDeformatter();
+
+       class AsymmetricKeyExchangeDeformatter() {
+	AsymmetricKeyExchangeDeformatter(srting name) {
+	}
+	string name;
+	srting age;
+        }
+
+
+============================================================================================================================================================================================
+
+ 5. What are Jagged Arrays?
+
+
+   Arrays:-
+  --------    Collection of similar elements
+
+
+   Jagged Arrays:-
+   -------------    The elements in Jagged Arrays can be of various dimensions and sizes
+
+
+============================================================================================================================================================================================
+
+
+6. What is the difference between out and ref parameters?
+
+ref vs out
+
+1)it is a key word 
+2)it is pass by Reference type
+                     |
+            -----------------
+           |                 |
+       pass by value    pass by refernce
+                             |
+                     ---------------
+                     |             |
+                   out            ref
+
+
+pass by value:-
+--------------
+        (program)   ------>            a=10;
+                                         |----->copy
+                                       a=10;
+                                      a=a+20;
+            a=30;<-------------------- a=30;
+
+
+1)a=10; set value  --->create copy--->a=10; again------>moves to the function ------>a=10+20=30;--------->and send to the main function---->to store that value we need temp variable
+
+ex:-
+----
+
+public static int ExampleFunction(int a)
+    {
+
+       a = a + 20;
+       return a;
+    }
+    
+main
+
+    int a = 10;
+    ExampleFunction(a);        -->output =10
+    Console.WriteLine(a);
+
+
+public static int ExampleFunction(int a)
+    {
+
+       a = a + 20;
+       return a;
+    }
+    
+main
+
+    int a = 10;
+    a=ExampleFunction(a);   //a =temp var   -->output =30
+    Console.WriteLine(a);
+
+
+
+pass by refernce:-
+-----------------
+
+ ( program )--------->a=10;
+                      a=a+10;    (by using ref ,in function itself set the value of a  ,a=30)
+          (passes)    a=30;
+                  
+
+ref:-
+----
+    public static int ExampleFunction(ref int a)
+    {
+
+        a = a + 20;
+       return a;                                   
+    }
+
+    int a = 10;
+    ExampleFunction(ref a);--------------->when argument passed as ref----->it must be initialized ------>before it can be passed to function
+    Console.WriteLine(a);
+
+
+output:-
+-----      30
+
+
+out:-
+----
+    public static int ExampleFunction(out int a)
+    {
+        a=0;
+        a = a + 20;  //(0+20)    ---->init performed in function
+       return a;                                   
+    }
+
+    int a = 10;
+    ExampleFunction(out a);--------------->when argument passed as out----->need not to be  initialized ------>before passing to function
+    Console.WriteLine(a);
+
+
+output:-
+-----      20
+
+============================================================================================================================================================================================
+
+7. What is the benefit of ‘using’ statement in C#?
+
+ to obtain a resource ----> for processing -----> before automatically disposing it---> when execution is completed.
+
+ex:-
+---
+ using (SqlConnection connection = new SqlConnection( connectionString))
+    {
+        SqlCommand command = new SqlCommand(queryString, connection);
+        command.Connection.Open();
+        command.ExecuteNonQuery();
+    }
+
+
+
+============================================================================================================================================================================================
+
+8. What is serialization?
+
+
+   Converting object into Stream of bytes----->through network----->Serialization. 
+   Converting Stream of bytes into object----->through network----->De-Serialization. 
+
+
+json:-(javascript object notation)
+-----
+     Data transfer can be done between two components in serialized manner
+
+
+===========================================================================================================================================================================================
+
+9. Can “this” command be used within a static method?
+
+no,
+
+============================================================================================================================================================================================
+
+10. Differentiate between Break and Continue Statement.
+
+Break:-
+-----   Jumps out of the loop
+
+ex:-
+---    for (int i = 0; i < 10; i++)
+            {
+                if (i == 7)
+                break;
+                Console.WriteLine(i);
+            }
+
+output:-
+------      1-6
+
+Continue Statement:-  To skip particular iteration
+-------------------
+
+
+ex:-
+---    for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                continue;
+                Console.WriteLine(i);
+            }
+
+output:-
+------     0-9   -->5 missed
+
+
+============================================================================================================================================================================================
+
+11. List the different types of comments in C#.
+
+1)Single Line Comments ( // )
+2)Multi Line Comments ( /* */ )
+
+============================================================================================================================================================================================
+
+12. Explain the four steps involved in the C# code compilation.
+
+1)Source code compilation in managed code.
+2)The Common Language Runtime (CLR) is loaded.
+3)Assembly execution is done through CLR.
+
+
+(source code)------------------------------------------------>.netframework   (c#,f#,vb)------------------------>CLR(common runtime language)---------------->procedure
+
+                                                          IL code(intermidate code)
+                                                                  |
+                                             common code--->which understood by  the clr               IL code is converted to  machine understood code(application execution file)
+
+
+============================================================================================================================================================================================
+
+13. Discuss the various methods to pass parameters in a method.  -->(refer) 6th question
+
+============================================================================================================================================================================================
+
+14. Name all the C# access modifiers.
+
+  
+     public:-     
+     --------    the code is accessible in all cases 
+
+     Private Modifier: -
+     --------------------------   it can only be accessed from within the class.
+
+     Internal Access Modifier :-
+     --------------------------   it can only be accessible from the current assembly point of that class.(my,doctor --2 controllrs----only 1 controller it can access class)
+
+
+     Protected Access Modifier: -
+     -------------------------    it can only be accessed by members of that class and those who inherit it.
+
+============================================================================================================================================================================================
+
+15. Mention all the advantages of C#.
+
+1)it is supported by .netframework
+2)it is object oriented programming language
+3)it is cross-platform----(type of application that works on various operating systems or devices  (linx,windows))
+4)it is used for many applications such as games ,web,console,services,desktop
+5)garbage collection is done automatically
+
+============================================================================================================================================================================================
+
+16. Mention the important IDEs  (integrated development environment (IDE)) for C# development provided by Microsoft.
+
+Visual Studio Code (VS Code)
+
+============================================================================================================================================================================================
+
+17. Why do we use C# language?  -->(refer) 15th question
+
+============================================================================================================================================================================================
+
+18. Mention the features of C# briefly. -->(refer) 15th question
+
+============================================================================================================================================================================================
+
+19. What is meant by Unmanaged or Managed Code?  -->(refer) 6th question
+
+  Managed Code:-
+  -----------    1)code that is executed by the CLR (Common Language Runtime)
+                  
+                 2)every application code is totally dependent on the .NET platform
+
+
+
+  Unmanaged:-
+  ----------     Code executed by a runtime programme that is not part of the .NET platform 
+
+============================================================================================================================================================================================
+
+20. What is meant by an Abstract Class?
+
+   
+
+  Abstraction :-
+  ------------     Exhibiting essential details & hiding internal implementations
+
+
+  Abstract class:-
+ -----------------   it cannot be used to create objects (to access it, it must be inherited from another class).
+
+   ex:-
+   ---   
+
+abstract class Animal                 // abstract class
+{
+  
+  public abstract void animalSound();   // Abstract method (does not have a body)
+  
+  public void sleep()
+  {
+    Console.WriteLine("Zzz");
+  }
+}
+
+
+class Pig : Animal         // Derived class (inherit from Animal)
+{
+  public override void animalSound()
+  {
+    
+    Console.WriteLine("The pig says: wee wee");
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Pig myPig = new Pig();       // Create a Pig object
+    myPig.animalSound();      // Call the abstract method
+    myPig.sleep();        
+  }
+}
+
+  Abstract method:-
+  --------------        
+                        1)it  can only be used in an abstract class
+
+                        2)it does not have a body  
+                    
+                        3)The body is provided by the derived class (inherited from).
+
+
+============================================================================================================================================================================================
+
+
+21. Differentiate between finalize blocks and finalize.
+
+finally:-
+--------   1) it is the part of exception handling ,if it is exception or not it is excuted
+
+            try   //try is akey word
+            {
+                 //error occured     ------(exception)
+            }
+            catch(Exception name ex)
+
+            {
+                //error handled  ---------(it will handle)
+            }
+
+            finally
+            {
+                 //connection closed  --------(if exception or not it will excute)
+            }
+
+
+
+ Error:-
+ ------     Compile time it occurs
+
+ Exception :-
+ ----------   Errors in program execution time(run time)
+
+
+ Exception Handling:- 
+ ------------------   1)A particular piece of code which has to be monitored for Exceptions
+
+                      2)it will kept under "try" block
+                      
+                      3)if exception occurs from the code in "try" block,we need to "catch" it
+
+
+==========================================================================================================================================================================================
+
+
+22. What is meant by an Interface?
+
+Interface:-
+----------    1) Abstraction can be implemented through interface   (implements--->interface -clss)
+               
+              2) public by default
+
+              3)will have only methods/properties
+
+
+
+interface IAnimal   -------// Interface
+{
+  void animalSound(); // interface method (does not have a body)
+}
+
+class Pig : IAnimal   // Pig "implements" the IAnimal interface
+
+{
+  public void animalSound() 
+  {
+    Console.WriteLine("The pig says: wee wee");
+  }
+}
+
+class Program 
+{
+  static void Main(string[] args) 
+  {
+    Pig myPig = new Pig();  // Create a Pig object
+    myPig.animalSound();
+  }
+}
+
+============================================================================================================================================================================================
+
+23. What is meant by a Partial Class?
+
+ Partial Class:-
+ -------------      
+
+                     1)Partial Class is a unique feature
+            
+                     2)It can break the functionality of a single class into many files.
+                
+                 ex:-
+                ----   public class Hello {}
+                       public class Hello {}----error 
+              
+                          
+                       public partial class Hello {}
+                       public partial class Hello {}
+              
+
+===========================================================================================================================================================================================
+
+24. What is the difference between read-only and constants?
+
+
+ constants:-
+ ---------    we can not change the variable once it is assigned-------we need to initialize value surly
+          
+              const int  a=100;
+ 
+              Console.WriteLine(a);
+  
+
+read-only:-
+---------   1)we can unintiliaze and can initialize (a-variable) any time want  ---(runtime)
+
+
+============================================================================================================================================================================================
+
+25. What is an interface class?   -->refer 22 ques
+
+============================================================================================================================================================================================
+ 
+26. What are reference types and value types?
+
+  
+     value types:-
+    ------------         
+                        1)a value type variable is  immutable(unable to be changed) data   ,it is stored in memory areas
+
+                       ex:-
+                       ---    int sample =5;
+
+                               ( memory allocation
+                                     
+                                   x907266----------------------->sample
+                                     |
+                                     5              )
+  
+                      
+                         int, float, bool, struct
+
+
+
+    reference types:-
+    ----------------    
+                        1)holds a memory address of location  where value is stored
+
+                        ex:-
+                       -----     string name =jp;
+
+                          ( memory allocation
+                                     
+                                   x907266----------------------->name
+                                     |
+                                 64467676644    ------------------------------------> 64467676644 
+                                                                                          |
+                                                                                         jp
+
+                        class, interface, array, string
+
+===========================================================================================================================================================================================
+27. What are User Control and Custom Control?
+
+   User Control:-
+  --------------   they make use of existing  controls to define their own logic
+
+  Custom Control:-
+  ---------------   if we are custimizg  some existing controller
+
+===========================================================================================================================================================================================
+28. What are sealed classes in C#?
+
+   sealed classes:-
+   ---------------     1)these are used to restrict the users from inheriting the class
+
+                       2)a class can be sealed by using sealed keyword
+
+                       3)no class can be derived from sealed class
+
+============================================================================================================================================================================================
+
+29. What is method overloading?
+
+method overloading:-
+------------------   Many methods in the same class with the same name but different signatures. 
+
+============================================================================================================================================================================================
+
+30. What is the difference between Arraylist and Array?
+
+Arraylist:-
+---------     Arraylist is similar but it does not have a fixed size.
+
+Array:-   items are same type and fixed  in length
+------
+
+============================================================================================================================================================================================
+
+31. Is it possible for a private virtual method to be overridden?
+
+    A private virtual method cannot be overridden as it can’t be accessed outside the class.
+
+============================================================================================================================================================================================
+32. Describe the accessibility modifier “protected internal”.------>refer 14th qus
+
+  Variables or methods that are Protected Internal can be accessed within the same assembly as well as from the classes which have been derived from the parent class.
+
+============================================================================================================================================================================================
+
+33.What are the differences between System.String and System.Text.StringBuilder classes?
+
+ System.String:-
+ --------------   1)String is Immutable (which can not change)
+                  2)it creates new object of string type in memory
+
+                  
+
+ System.Text.StringBuilder:-
+ --------------------------    1)StringBuilder is Mutable
+                               2)if we create StringBuilder  object then we can perform operations like (append,insert,replace)without creating new instance for every time
+
+ex:-
+----
+static void Main(string[] args)
+        {
+            String systemString = "Hello";
+            StringConcat(systemString);
+            Console.WriteLine("String Class Result: " + systemString);
+            StringBuilder stringBuilderString = new StringBuilder("Hello");
+            StringBuilderConcat(stringBuilderString);
+            Console.WriteLine("StringBuilder Class Result: " + stringBuilderString);
+        }
+        public static void StringConcat(String systemString)
+        {
+            String appendString = " World";
+            systemString = String.Concat(systemString, appendString);
+        }
+        public static void StringBuilderConcat(StringBuilder stringBuilderString)
+        {
+            //stringBuilderString.Append(" World");
+            stringBuilderString.Replace("Hello", "jp");
+
+        }
+
+
+output:-
+--------
+
+String Class Result: Hello
+StringBuilder Class Result: jp
+
+============================================================================================================================================================================================
+34. What’s the difference between the System.Array.CopyTo(shallow copy)() and System.Array.Clone(deep copy)() ?
+
+  System.Array. CopyTo(shallow copy)():-
+  ------------------------------------    elements present in  existing array get copied into another existing array
+
+
+  System.Array.Clone(deep copy)():-
+  --------------------------------   a new object is created , with all original  array elements using copy to method
+
+============================================================================================================================================================================================
+
+35. How can the Array elements be sorted in descending order?
+
+     Sorting :-
+     --------      the process of arranging elements either in ascending (or) descending order
+  
+                    You can use the Using Sort() methods and then Reverse() method.
+
+    
+============================================================================================================================================================================================
+36. What is the difference between Interface and Abstract Class in C#? 
+
+Interface:-     
+----------        shape
+                    |  Implements
+   -------------------------------------
+  |                                     |
+circle                              rectangle
+
+1)interface is not a class
+2)Interface allows multiple inheritance
+3)all are public
+4) don’t have any constructor in an interface.
+
+
+Abstract Class:-
+---------------     
+                   shape
+                    |  extends
+   -------------------------------------
+  |                                     |
+circle                              rectangle
+
+
+1)abstract is a class
+2)Abstract class does not allow multiple inheritance
+3)private by default
+4) we need to use abstract keywords to declare abstract methods
+5)uses a constructor,
+
+===========================================================================================================================================================================================
+
+37. What is the difference between Dispose() and Finalize()methods?
+  
+
+              Dispose()	                                                                                Finalize()
+            ------------                                                                             ---------------
+ 1) Dispose is called explicitly by the developer.	                             1) Finalize is called automatically by the garbage collector
+ 2) We can use Dispose method to release both managed and unmanaged resources.	     2) Finalize can only release unmanaged resources.
+ 3) Dispose method belongs to the IDisposable interface.	                     3) While Finalize() belongs to the Object class.
+ 4)We can call Dispose method multiple times without any issues.	             4) Finalize should only be called once.
+
+===========================================================================================================================================================================================
+ 38. What are circular references?
+ 
+     when two or more resources dependent on each other ,it causes lock condition ,then resources become unstable
+
+===========================================================================================================================================================================================
+39. What are generics in C# .NET?
+
+generics:-
+---------    -> Generics Allows us to make classes & methods -> TYPE INDEPENDENT
+             FEATURES:
+             maximize code reuse
+             performance.
+             Type Independence
+           
+============================================================================================================================================================================================
+ 40. What is an object pool in .NET?
+    
+     a container that has objects ,which are ready to be used 
+    
+============================================================================================================================================================================================
+
+41.List down the most commonly used types of exceptions in .NET
+
+  1)NullReferenceException--(check whether the reference type parameters are null or not before accessing them.)
+  2)OutOfMemoryException --(the program does not have enough memory to continue its execution.)
+
+============================================================================================================================================================================================
+
+42. What are Custom Exceptions?
+
+   1)errors have to be handled according to user requirements
+
+===========================================================================================================================================================================================
+
+43. What are delegates?
+
+    delegates:-
+    -----------  1)a delegate is a variable that holds the reference to a method
+
+                 2)a delegate can refer more than one methods of same return type and parameters
+     
+
+    ex:-
+    --- 
+namespace palindrome
+{
+    internal class Program
+    {
+       
+        delegate void Calculator(int x,int y);
+
+        public static void Add(int a ,int b)
+        {
+            Console.WriteLine(a + b);
+        }
+
+        public static void sub(int a, int b)
+        {
+            Console.WriteLine(a - b);
+        }
+
+        static void Main(string[] args)
+        {
+            Calculator obj = new Calculator(sub);
+            obj(2, 3);
+
+
+        }     
+    }
+ }
+
+
+43. What are delegates?
+   
+    it is a method to call when the event is triggered ,
+
+event :-
+------   action has to be occured
+    ============================================================================================================================================================================================
+
+44. What is the difference between method overriding and method overloading?
+
+  method overloading:-
+ -------------------    it has same name as class but different in signatures(parameters)
+
+
+  method overriding:-
+ --------------------    Overriding concerns defining a different implementation of the same method in inherited classes.
+
+============================================================================================================================================================================================
+
+45. How do you inherit a class into another class in C#?
+
+  colon can be used as an inheritance operator. You need to place a colon and follow it with the class name.
+
+============================================================================================================================================================================================
+46. What are the various ways that a method can be overloaded?
+
+   Different data types can be used for a parameter in order for a method to be overloaded
+
+==========================================================================================================================================================================================
+
+
+47. Why can't the accessibility modifier be specified for methods within the interface?
+
+  no, all are public 
+
+===========================================================================================================================================================================================
+48. How can we set the class to be inherited, but prevent the method from being overridden?
+ 
+    to set class as inherited ,it needs to be declared as public
+
+============================================================================================================================================================================================
+49. What happens if the method names in the inherited interfaces conflict?-------------x
+
+============================================================================================================================================================================================
+
+50. What is the difference between a struct and a class in C#? 
+
+  struct:-  
+  --------    it is a value type  , use struct Keyword
+
+  class:-
+ --------    it is reference type  , use class Keyword
+
+==========================================================================================================================================================================================
+
+51. How to use nullable types in .Net?
+
+  null value can be taken by value types----they are called nullable types
+
+========================================================================================================================================================================================
+52. How can we make an array with non-standard values?
+    
+       an array with non-default values can be created by  using list(Enumerable repeat)
+
+========================================================================================================================================================================================
+
+53. What is the difference between “is” and “as” operators in c#?
+   
+    “is”:-
+    ----    it is used to check an objects compatibility with respect to given type  and result is returned as boolean
+ 
+    “as” :-
+    -----   it is uesd for casting an object to either a type or a class
+
+===========================================================================================================================================================================================
+
+54. What is a multicast delegate?
+
+   multicast delegate:-
+  --------------------    when a single delegate comes with multiple handlers-----each handler is assigned to a method
+
+============================================================================================================================================================================================
+
+55. What are Indexers in C#?
+ 
+    Indexers:-
+    ---------
+               it is a class property -----that allows you to access ------a member variable of a class or struct using-------- the features of an array
+
+============================================================================================================================================================================================
+56. What is the distinction between "throw" and "throw ex" in.NET?
+ 
+   "throw":-
+    ------   
+
+              catch
+              {
+                if(wrong);-
+                  throw(ex name);
+
+              }
+   
+   "throw ex":-
+   ---------       
+               
+                  all here only exceptions
+
+
+   stack trace:
+    -----------
+    1)api action
+    2)service method -----------------------all (4)--->if throw cmplt checks information-----display exception 
+    3)data layer method--(throw ex)----it shows only this
+    4)sub method
+
+  
+===========================================================================================================================================================================================
+
+57.What are C# attributes and its significance?
+ 
+   C# attributes:-
+  ----------------    to convey information in runtime about the behaviour of classes,methods,structures
+
+============================================================================================================================================================================================
+
+58. In C#, how do you implement the singleton design pattern?
+
+  singleton design pattern:-
+  -------------------------    class having only one instance of program-----access point is provided globally
+
+
+============================================================================================================================================================================================
+
+59. What's the distinction between directcast and ctype?
+
+  ctype-  it is value type
+
+  directcast- used to cast reference type
+
+============================================================================================================================================================================================
+
+60. Is C# code managed or unmanaged code?
+
+  Managed Code:-
+  -----------    1)code that is executed by the CLR (Common Language Runtime)
+                  
+                 2)every application code is totally dependent on the .NET platform
+
+
+
+  Unmanaged:-
+  ----------     Code executed by a runtime programme that is not part of the .NET platform 
+
+
+===========================================================================================================================================================================================
+
+61. What is a Console application?
+
+ Console application:-
+ --------------------   the application run on the command prompt window  is called console application
+
+=========================================================================================================================================================================================
+
+62. What are namespaces in C#?
+
+  namespaces:-
+  ----------    namespaces are used to organize the classes  --- it helps to control the scope of classes and methods in large
+
+==========================================================================================================================================================================================
+
+63. What is the distinction between the Dispose() and Finalize() methods?
+
+              Dispose()	                                                                                Finalize()
+            ------------                                                                             ---------------
+ 1) Dispose is called explicitly by the developer.	                             1) Finalize is called automatically by the garbage collector
+ 2) We can use Dispose method to release both managed and unmanaged resources.	     2) Finalize can only release unmanaged resources.
+ 3) Dispose method belongs to the IDisposable interface.	                     3) While Finalize() belongs to the Object class.
+ 4)We can call Dispose method multiple times without any issues.	             4) Finalize should only be called once.
+
+
+==========================================================================================================================================================================================
+64. Write features of Generics in C#?
+   
+       -> Generics Allows us to make classes & methods -> TYPE INDEPENDENT
+
+            FEATURES:
+
+            maximize code reuse
+            performance.
+            Type Independence
+
+===========================================================================================================================================================================================
+
+65. Difference between SortedList and SortedDictionary in C#.
+
+   In SortedList:- the elements are stored in a continuous block in memory.
+
+   In SortedDictionary:- the elements are stored in separate object that can spread all over the heap.
+
+==========================================================================================================================================================================================
+
+66. What is Singleton design pattern in C#? --->(refer) 58 th question
+
+==========================================================================================================================================================================================
+
+67. What is tuple in C#?
+   
+     tuple is a data structure --to represent---data set ---that has multiple values ----that could be related to each other
+
+============================================================================================================================================================================================
+
+68. What are Events?
+
+  Events:-
+  ------     events are user actions such as ---key press,clicks,mouse movements  etc
+
+============================================================================================================================================================================================
+
+69.What is the Constructor Chaining in C#?
+
+     1)it allows one constructor to call another constructor of the same class or a base class.
+
+    2)It can help simplify   
+                                1) initialization of objects and 
+
+                                2) avoid code duplication
+
+      Two Types of Calling... 1. This Keyword; 2. Base Keyword;
+============================================================================================================================================================================================
+
+70. What is a multicasting delegate in C#? --->(refer) 54 th question
+
+===========================================================================================================================================================================================
+
+71. What are Accessibility Modifiers in C#? (refer) 14 th question
+
+============================================================================================================================================================================================
+72. What is a Virtual Method in C#?
+
+    1)in parent class ,a virtual method is declared that can be overridden in child class
+
+    2)we construct a virtual method in the base class, using virtual keyword 
+
+    3)and the function is overridden in the derived class with override keyword
+
+
+============================================================================================================================================================================================
+73. What is Multithreading with .NET?
+   
+    Multithreading:-
+    --------------    multiple threads within a single process ,each thread here peforms a different functions--(task)
+
+  thread-it is an execution path within a process
+
+===========================================================================================================================================================================================
+74. In C#, what is a Hash table class?
+
+  Hash table class:-
+ ------------------
+
+             it  represents a ----collection of key-value pairs----- that are organized based on the hash code of the key.
+
+============================================================================================================================================================================================
+
+
+76. Why can't a private virtual procedure in C# be overridden?
+
+   Private virtual methods are not accessible outside of the class.
+
+===========================================================================================================================================================================================
+
+77. What is File Handling in C#?
+
+   1)various operations we can perform on a file such as   
+              a)creating file
+              b)reading data from th file
+              c)writing data into the file
+
+============================================================================================================================================================================================
+
+78. What do you understand about Get and Set Accessor properties?
+
+============================================================================================================================================================================================
+79. What is the Race condition in C#?
+
+
+
+============================================================================================================================================================================================
+80. Why are Async and Await used in C#?
+
+
+Encrypted,Decrypt ------->Cryptography
+
+Synchrounous :-
+---------------    Activities performing one after another
+
+Asynchrounous:-
+--------------    Activities performing parallely by switiching among others
+
+
+      
+                 1)to use Asynchrounous programming , we need to use Async and Await keywords 
+
+                 2)if we want to use Asynchrounous programming , then we need to mark the method with the Async keyword
+
+
+============================================================================================================================================================================================
+
+81. What are Indexers in C#?
+ 
+    Indexers:-
+    ---------
+               it is a class property -----that allows you to access ------a member variable of a class or struct using-------- the features of an array
+
+============================================================================================================================================================================================
+82. What is Thread Pooling in C#?
+
+============================================================================================================================================================================================
+83. What information can you provide regarding the XSD file in C#?
+
+============================================================================================================================================================================================
+84. What are I/O classes in C#? 
+
+
+The System.IO namespace has various classes useful for performing various operations with files, such as 
+                                   1)creating and
+                                   2) deleting files, 
+                                   3)reading from or writing to a file, 
+                                   4)closing a file etc.
+
+
+============================================================================================================================================================================================
+
+85. What exactly do you mean by regular expressions in C#? 
+  
+     it is a pattern that can be used to match  a set of input
+
+===========================================================================================================================================================================================
+
+4. What is Boxing and Unboxing in C#? 
+  
+            int i = 20;
+            object j = i;  // -----------------------------Boxing     (Coverting value type to reference type)
+            Console.WriteLine(j);--o/p=20
+
+
+            int number = Convert.ToInt32(j);   //----------UnBoxing   (Converting reference type to value type)
+            Console.WriteLine(number);--o/p=20
+
+===========================================================================================================================================================================================
+
+1. What is C#? And What is the latest version of C#?
+
+        1) C# is a object oreineted programming language
+
+        2) developed by  Microsoft that runs on the .NET Framework.
+
+        3) used in creating 1)windows application
+                            2)mobile application
+                            3)client-server application
+                            4)data base application
+                            5)web services etc
+      
+        .NET Framework :- (network enable technologis)
+        --------------
+         1)supports multiple programming languages -->because-->to excute code
+
+         C# 11.0, which was released in 2022 in .NET 7.0.
+
+
+
+===========================================================================================================================================================================================
+
+2. What is an object in C#? 
+
+     object:-   It is an instance of class  & "new" is a  keyword that is  used to construct an object         (Doctor doc = new Doctor)
+     -------
+===========================================================================================================================================================================================
+
+3. What is Managed or Unmanaged Code? 
+
+ Managed Code:-
+  -----------    1)code that is executed by the CLR (Common Language Runtime)
+                  
+                 2)every application code is totally dependent on the .NET platform
+
+
+
+  Unmanaged:-
+  ----------     Code executed by a runtime programme that is not part of the .NET platform 
+
+============================================================================================================================================================================================
+
+4. What is Boxing and Unboxing in C#? 
+  
+            int i = 20;
+            object j = i;  // -----------------------------Boxing     (Coverting value type to reference type)
+            Console.WriteLine(j);--o/p=20
+
+
+            int number = Convert.ToInt32(j);   //----------UnBoxing   (Converting reference type to value type)
+            Console.WriteLine(number);--o/p=20
+
+============================================================================================================================================================================================
+
+5. What is the difference between a struct and a class in C#? 
+
+  struct:-  
+  --------    it is a value type  , use struct Keyword
+
+  class:-
+ --------    it is reference type  , use class Keyword
+
+
+namespace PracticeConsole
+{
+    // Class vs. Struct
+    class ClassA
+    {
+        public int classInt;
+    }
+    struct StructureA
+    {
+        public int structInt;
+    }
+
+    internal class Program
+    {
+        public static void UpdateClassIntVal(ClassA value)
+        {
+            value.classInt = 0;
+        }
+        public static void UpdateStructIntVal(StructureA value)
+        {
+            value.structInt = 0;
+        }
+
+        static void Main(string[] args)
+        {
+            //Class vs. Struct
+            ClassA classObj = new ClassA();
+            StructureA structObj = new StructureA();
+
+            classObj.classInt = 100;
+            structObj.structInt = 200;
+
+            Console.WriteLine("Before Passing Update Fucntion");
+            Console.WriteLine(classObj.classInt); // 100
+            Console.WriteLine(structObj.structInt); // 200
+
+            UpdateClassIntVal(classObj);
+            UpdateStructIntVal(structObj);
+
+            Console.WriteLine("After Passing Update Fucntion");
+            Console.WriteLine(classObj.classInt); // 0
+            Console.WriteLine(structObj.structInt); // 200
+
+           
+        }
+    }
+}
+
+
+Before Passing Update Fucntion
+100
+200
+After Passing Update Fucntion
+0
+200
+===========================================================================================================================================================================================
+
+6. What is the difference between Interface and Abstract Class in C#? 
+
+Interface:-     
+----------        shape
+                    |  Implements
+   -------------------------------------
+  |                                     |
+circle                              rectangle
+
+1)interface is not a class
+2)Interface allows multiple inheritance
+3)all are public
+4) don’t have any constructor in an interface.
+
+
+Abstract Class:-
+---------------     
+                   shape
+                    |  extends
+   -------------------------------------
+  |                                     |
+circle                              rectangle
+
+
+1)abstract is a class
+2)Abstract class does not allow multiple inheritance
+3)private by default
+4) we need to use abstract keywords to declare abstract methods
+5)uses a constructor,
+==========================================================================================================================================================================================
+
+7. What is an enum in C#? 
+
+   1)An enum is a special class that represents  a group of constants(unchangeable)
+   
+   2)to create enum ,use keyword enum 
+
+ex:-
+---
+ enum WeekDays
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+ static void Main(string[] args)
+        {
+
+            Console.WriteLine(WeekDays.Monday);  //output:Monday
+            int day=(int)WeekDays.Friday;
+            Console.WriteLine(day); //enum to int conversion-----//output:4
+            
+        }
+
+              
+
+============================================================================================================================================================================================
+
+8. What is the difference between “continue” and “break” statements in C#? 
+
+Break:-
+-----   Jumps out of the loop
+
+ex:-
+---    for (int i = 0; i < 10; i++)
+            {
+                if (i == 7)
+                    break;
+                Console.WriteLine(i);
+            }
+
+output:-
+------      1-6
+
+Continue Statement:-  To skip particular iteration
+-------------------
+
+
+ex:-
+---    for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                    continue;
+                Console.WriteLine(i);
+            }
+
+output:-
+------     0-9   -->5 missed
+
+============================================================================================================================================================================================
+
+9. What is the difference between constant and readonly in C#?
+
+constants:-
+ ---------    we can not change the variable once it is assigned-------we need to initialize value surly
+          
+              const int  a=100;
+ 
+              Console.WriteLine(a);
+  
+
+read-only:-
+---------   1)we can unintiliaze and can initialize (a-variable) any time want  ---(runtime)
+
+
+===========================================================================================================================================================================================
+
+10. What is the difference between ref and out keywords?
+ 
+ref vs out
+
+1)it is a key word 
+2)it is pass by Reference type
+                     |
+            -----------------
+           |                 |
+       pass by value    pass by refernce
+                             |
+                     ---------------
+                     |             |
+                   out            ref
+
+
+pass by value:-
+--------------
+        (program)   ------>            a=10;
+                                         |----->copy
+                                       a=10;
+                                      a=a+20;
+            a=30;<-------------------- a=30;
+
+
+1)a=10; set value  --->create copy--->a=10; again------>moves to the function ------>a=10+20=30;--------->and send to the main function---->to store that value we need temp variable
+
+ex:-
+----
+
+public static int ExampleFunction(int a)
+    {
+
+       a = a + 20;
+       return a;
+    }
+    
+main
+
+    int a = 10;
+    ExampleFunction(a);        -->output =10
+    Console.WriteLine(a);
+
+
+public static int ExampleFunction(int a)
+    {
+
+       a = a + 20;
+       return a;
+    }
+    
+main
+
+    int a = 10;
+    a=ExampleFunction(a);   //a =temp var   -->output =30
+    Console.WriteLine(a);
+
+
+
+pass by refernce:-
+-----------------
+
+ ( program )--------->a=10;
+                      a=a+10;    (by using ref ,in function itself set the value of a  ,a=30)
+          (passes)    a=30;
+                  
+
+ref:-
+----
+    public static int ExampleFunction(ref int a)
+    {
+
+        a = a + 20;
+       return a;                                   
+    }
+
+    int a = 10;
+    ExampleFunction(ref a);--------------->when argument passed as ref----->it must be initialized ------>before it can be passed to function
+    Console.WriteLine(a);
+
+
+output:-
+-----      30
+
+
+out:-
+----
+    public static int ExampleFunction(out int a)
+    {
+        a=0;
+        a = a + 20;  //(0+20)    ---->init performed in function
+       return a;                                   
+    }
+
+    int a = 10;
+    ExampleFunction(out a);--------------->when argument passed as out----->need not to be  initialized ------>before passing to function
+    Console.WriteLine(a);
+
+
+output:-
+-----      20
+
+============================================================================================================================================================================================
+
+11. Can “this” be used within a static method?
+
+ no
+============================================================================================================================================================================================
+
+12. What are properties in C#?
+
+There are the following 4 types of Properties:
+
+ 1)Read-Write Property
+
+ 2)Read-Only Property
+
+ 3)Static Property
+
+ 4)Indexer Property
+
+=====================================================================================================================================================================================
+
+13. What is an extension method in C#?
+
+    extension method:-
+    -------------------   an extension method allows -----developers----to extend the functionality ---of an existing type
+    
+===========================================================================================================================================================================================
+14. What is the difference between Dispose and Finalize in C#?
+===========================================================================================================================================================================================
+15. What is the difference between String and StringBuilder in C#?
+
+ System.String:-
+ --------------   1)String is Immutable (which can not change)
+                  2)it creates new object of string type in memory
+
+                  
+
+ System.Text.StringBuilder:-
+ --------------------------    1)StringBuilder is Mutable
+                               2)if we create StringBuilder  object then we can perform operations like (append,insert,replace) without creating new instance for every time
+
+ex:-
+----
+static void Main(string[] args)
+        {
+            String systemString = "Hello";
+            StringConcat(systemString);
+            Console.WriteLine("String Class Result: " + systemString);
+            StringBuilder stringBuilderString = new StringBuilder("Hello");
+            StringBuilderConcat(stringBuilderString);
+            Console.WriteLine("StringBuilder Class Result: " + stringBuilderString);
+        }
+        public static void StringConcat(String systemString)
+        {
+            String appendString = " World";
+            systemString = String.Concat(systemString, appendString);
+        }
+        public static void StringBuilderConcat(StringBuilder stringBuilderString)
+        {
+            //stringBuilderString.Append(" World");
+            stringBuilderString.Replace("Hello", "jp");
+
+        }
+
+
+output:-
+--------
+
+String Class Result: Hello
+StringBuilder Class Result: jp
+============================================================================================================================================================================================
+
+16. What is the use of a delegate in C#?
+
+  delegates:-
+  -----------    1)a delegate is a variable that holds the reference to a method
+
+                 2)a delegate can refer more than one methods of same return type and parameters
+     
+
+    ex:-
+    --- 
+namespace palindrome
+{
+    internal class Program
+    {
+       
+        delegate void Calculator(int x,int y);
+
+        public static void Add(int a ,int b)
+        {
+            Console.WriteLine(a + b);
+        }
+
+        public static void sub(int a, int b)
+        {
+            Console.WriteLine(a - b);
+        }
+
+        static void Main(string[] args)
+        {
+            Calculator obj = new Calculator(sub);
+            obj(2, 3);
+
+
+        }     
+    }
+ }
+
+=======================================================================================================================================================================================
+
+17. What are sealed classes in C#?
+
+=======================================================================================================================================================================================
+
+18. What are partial classes in C#? Why do we need partial classes?
+
+ Partial Class:-
+ -------------      
+
+                     1)Partial Class is a unique feature
+            
+                     2)It can break the functionality of a single class into many files.
+                
+                 ex:-
+                ----   public class Hello {}
+                       public class Hello {}----error 
+              
+                          
+                       public partial class Hello {}
+                       public partial class Hello {}
+
+============================================================================================================================================================================================
+
+19. What is the difference between boxing and unboxing in C#?  --->refer 4 th question
+ 
+============================================================================================================================================================================================
+20. What is IEnumerable<> in C#?
+    
+     IEnumerable is an interface in C# representing a collection of elements that can be enumerated.
+
+==========================================================================================================================================================================================
+
+21. What is the difference between late and early binding in C#?
+
+  The Early Binding occurs at compile time while the Late Binding occurs at runtime.
+
+============================================================================================================================================================================================
+
+
+22. What are the differences between IEnumerable and IQueryable?
+
+============================================================================================================================================================================================
+23. What happens if the inherited interfaces have conflicting method names?
+
+============================================================================================================================================================================================
+
+24. What are the Arrays in C#?
+
+   Arrays:-
+   ------     used to store multiple values in a single variable
+
+  types: 
+          1)single-dimensional, 
+          2)multidimensional, and 
+          3)jagged array.
+
+
+============================================================================================================================================================================================
+
+25. What is the Constructor Chaining in C#? 
+
+    1)it allows one constructor to call another constructor of the same class or a base class.
+
+    2)It can help simplify   
+                                1) initialization of objects and 
+
+                                2) avoid code duplication
+
+    Two Types of Calling... 1. This Keyword; 2. Base Keyword;
+
+============================================================================================================================================================================================
+
+26. What’s the difference between the Array.CopyTo() and Array.Clone()?
+===========================================================================================================================================================================================
+
+27. Can Multiple Catch Blocks be executed in C#? 
+
+  No. It isn't possible to execute the code in both catch blocks for a single exception.
+
+==========================================================================================================================================================================================
+
+28. What is the Singleton Design Pattern, and how to implement it in C#?
+
+singleton design pattern:-
+-------------------------    class having only one instance of program------access point is provided globally
+
+==========================================================================================================================================================================================
+
+29. Difference between Throw Exception and Throw Clause 
+
+============================================================================================================================================================================================
+
+30. What are Indexers in C#?
+ 
+    Indexers:-
+    ---------
+               it is a class property -----that allows you to access ------a member variable of a class or struct using-------- the features of an array
+
+=========================================================================================================================================================================================
+
+31. What is a multicast delegate in C#?
+
+ multicast delegate:-
+  --------------------    when a single delegate comes with multiple handlers-----each handler is assigned to a method
+
+=========================================================================================================================================================================================
+
+32. Difference between the Equality Operator (==) and Equals() Method in C#
+
+    Equality Operator (==):-
+    -----------------------   Equality Operator (==) is the comparison operator,
+
+    Equals():-
+    ---------   Equals() method compares the contents of a string
+
+
+            Equals() method is an extension method of the string class when you assign a null value to the string variable and using that variable 
+            the Equals() method then gets an exception of a null reference so you must be sure that your variable doesn’t have null values when calling the Equals() method. 
+
+
+        static void Main(string[] args)
+        {
+
+           string name = "jagapathi";          
+           string Myname = name;
+                
+            //string name = "jagapathi";          
+            //string Myname = null;
+
+            Console.WriteLine("== oprator result in {0}",name==Myname);
+            Console.WriteLine("Equals method result in {0}", Myname.Equals(name));//null exception error
+            Console.ReadLine();
+
+        }
+
+
+
+=========================================================================================================================================================================================
+33. What's the Difference between the Is and As operators in C#
+
+   Is operator:-
+   ----------      it checks object type,  if two objects are of same type ,it returns true else if returns false
+
+
+    As operator:-
+   -------------  
+                    'as' is similiar to 'is' operator , the only difference --is it returns the  object -----if both are compatible with that type---else --it will return as null
+
+
+=========================================================================================================================================================================================
+34. How to use Nullable<> Types in C#?
+=========================================================================================================================================================================================
+
+35. What are the Different Ways a Method can be Overloaded?
+
+    we can use a method with the same name but different signatures.
+
+=========================================================================================================================================================================================
+
+36. What is an Object Pooling?
+
+===========================================================================================================================================================================================
+37. What are Generics in C#?
+
+generics:-
+---------    -> Generics Allows us to make classes & methods -> TYPE INDEPENDENT
+             FEATURES:
+             maximize code reuse
+             performance.
+             Type Independence
+
+==========================================================================================================================================================================================
+
+38. What is the role of access modifiers?
+
+Access modifiers are keywords used to specify the declared accessibility of a member or a type. This section introduces the five access modifiers:
+
+public
+protected
+internal
+private
+file
+
+============================================================================================================================================================================================
+
+39. What is a Virtual Method in C#?
+
+============================================================================================================================================================================================
+
+
+40. What is the difference between an Array and ArrayList in C#?
+
+Arraylist:-
+---------     Arraylist is similar but it does not have a fixed size.
+
+Array:-   items are same type and fixed  in length
+------
+============================================================================================================================================================================================
+
+41. What are Value types and Reference types in C#?
+
+Value types:-
+------------ 
+
+bool
+byte
+char
+decimal
+double
+enum
+float
+int
+long
+sbyte
+short
+struct
+uint
+ulong
+ushort
+
+Reference types:-
+-----------------   
+
+String
+Arrays (even if their elements are value types)
+Class
+Delegate
+
+===========================================================================================================================================================================================
+
+42. What is Serialization in C#?
+
+
+   Converting object into Stream of bytes----->through network----->Serialization. 
+   Converting Stream of bytes into object----->through network----->De-Serialization. 
+
+
+json:-(javascript object notation)
+-----
+     Data transfer can be done between two components in serialized manner
+
+===========================================================================================================================================================================================
+
+43. How do you use the “using” statement in C#?
+
+to obtain a resource for processing ---- before automatically disposing it------ when execution is completed.
+
+ex:-
+---
+ using (SqlConnection connection = new SqlConnection( connectionString))
+    {
+        SqlCommand command = new SqlCommand(queryString, connection);
+        command.Connection.Open();
+        command.ExecuteNonQuery();
+    }
+
+==========================================================================================================================================================================================
+
+44. What is a Jagged Array in C#?
+
+  Arrays:-
+  --------    Collection of similar elements
+
+
+   Jagged Arrays:-
+   -------------    The elements in Jagged Arrays can be of various dimensions and sizes
+
+============================================================================================================================================================================================
+
+45. What is Multithreading with .NET?
+
+============================================================================================================================================================================================
+
+46. What are Anonymous Types in C#?
+
+============================================================================================================================================================================================
+47. What is a Hashtable in C#?
+
+Hash table class:-
+ ------------------
+
+             it  represents a ----collection of key-value pairs----- that are organized based on the hash code of the key.
+
+
+============================================================================================================================================================================================
+
+48. What is LINQ in C#?
+ 
+LINQ:-
+------    1)language integrated quary  
+    
+          2)the ability to generate ---quaries ---to retrive --data from --data source
+
+============================================================================================================================================================================================
+49. What is File Handling in C#.Net?
+
+   1)various operations we can perform on a file such as   
+              a)creating file
+              b)reading data from th file
+              c)writing data into the file
+
+============================================================================================================================================================================================
+
+50. What is Reflection in C#?
+
+ Reflection :-
+------------    
+             * reflection allows us to inspect and manipulate
+                                                             1) classes, 
+                                                             2) constructors, 
+                                                             3) methods, and
+                                                             4) fields at run time.
+              
+============================================================================================================================================================================================ 
+
+
+for loop- we can excute set of statements ,until the condition is true--break,continue
+
+for each loop -through elements in an array
+
+============================================================================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
